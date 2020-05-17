@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+
+<body>
+    <div class="modal" id="modal">
+        <div class="modalbox">
+        </div>
+    </div>
+    <header>
+        <div class="header__container">
+            <div class="header__title">
+                <h1 class="abs-cen">Todo list</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main__container" id="menu">
+            <div class="todo">
+                <input type="checkbox" name="check-menu" id="check-menu" class="check-menu" checked>
+                <div class="todo__menu">
+                    <label for="check-menu">
+                        <div class="lines">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </label>
+                    <div class="menu__container">
+                        <div class="menu__list">
+                            <div id="filter-all" class="menu__item menu__title"><span class="filter__icon"></span>Tasks</span></div>
+                            <div id="filter-important" class="menu__item">Important</div>
+                            <div id="filter-completed" class="menu__item">Completed</div>
+                        </div>
+                        <div class="custom__list">
+                            <div class="menu__custom menu__title">
+                                <span class="custom__icon"></span>
+                                Custom lists
+                                <span class="add__custom" id="add-custom"></span>
+                            </div>
+                            <div id="custom-result"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="todo__content">
+                    <div class="todo__header">
+                        <div class="todo__title">
+                            <h2 id="todo-title">Tasks</h2>
+                        </div>
+                        <div class="todo__options">
+                            <div class="todo__search">
+                                <div class="search__container">
+                                    <label for="search"></label>
+                                    <input type="search" name="search" id="search" class="lens" autocomplete="off">
+                                </div>
+                            </div>
+                            <div id="add-task" class="add"></div>
+                            <!-- <div class="trash" id="trash"></div> -->
+                        </div>
+                    </div>
+                    <div class="todo__items">
+                        <input type="checkbox" name="completed" id="completed">
+                        <input type="checkbox" name="important" id="important">
+                        <input type="checkbox" name="check-delete" id="check-delete">
+                        <div id="result">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <template id="templateformcustom">
+            <span class="close" data-close="close"></span>
+                <form action="/" method="POST" name="formcustom" id="formcustom" class="form__custom">
+                    <div>
+                        <label for="fcustom">List name:</label>
+                        <label for="fcustom" class="error">Required (min 3 max 25) or the list already exists</label>
+                        <input type="text" name="fcustom" id="fcustom">
+                    </div>
+                    <div>
+                        <div>
+                            <input type="button" data-close="close" value="cancel">
+                        <input type="submit" value="save">
+                        </div>
+                    </div>
+                </form>
+
+        </template>
+        <template id="templateformadd">
+            <span class="close" data-close="close"></span>
+            <form action="/" method="POST" name="formadd" id="formadd" class="form__add">
+                <div>
+                    <label for="ftitle">Title:</label>
+                    <label for="ftitle" class="error">Title required (min 3 max 50)</label>
+                    <input type="text" name="ftitle" id="ftitle">
+                </div>
+                <div>
+                    <label for="fdescription">Description:</label>
+                    <label for="fdescription" class="error">Description required (min 3 max 500)</label>
+                    <textarea name="fdescription" id="fdescription" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <div>
+                        <label for="fcompleted">
+                            <input type="checkbox" name="fcompleted" id="fcompleted">
+                            Completed</label>
+                    </div>
+                    <div>
+                        <label for="fimportant">
+                            <input type="checkbox" name="fimportant" id="fimportant">
+                            Important</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="fcustom">Custom list:</label>
+                    <select name="fcustom" id="fcustom">
+                        <option value="">--</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fcolor">Color:</label>
+                    <select name="fcolor" id="fcolor">
+                        <option value="blue">Blue (default)</option>
+                        <option value="gray">Gray</option>
+                        <option value="green">Green</option>
+                        <option value="orange">Orange</option>
+                        <option value="pink">Pink</option>
+                        <option value="purple">Purple</option>
+                        <option value="yellow">Yellow</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="button" data-close="close" value="Cancel">
+                    <input type="reset" value="Clear">
+                    <input type="submit" value="Save">
+                </div>
+            </form>
+        </template>
+        <template id="deltask">
+                <span class="trash"></span>
+                <div class="message">
+                    <p>Delete this task?</p>
+                </div>
+                <div>
+                    <input type="button" data-del="delconfirm" value="Delete">
+                    <input type="button" data-del="cancelconfirm" value="Cancel">
+                </div>
+        </template>
+        <template id="delcustom">
+                <div class="message">
+                    <p>This custom list and all its items will be removed</p>
+                </div>
+                <div>
+                    <input type="button" data-del="delconfirm" value="Delete">
+                    <input type="button" data-del="cancelconfirm" value="Cancel">
+                </div>
+        </template>
+    </main>
+
+    <script src="src/js/app.js"></script>
+</body>
+
+</html>
